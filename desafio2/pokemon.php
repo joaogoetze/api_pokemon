@@ -59,9 +59,10 @@ function getFileContent()
         $fileSize = filesize($filename);
 
         $content = fread($file, $fileSize);
-
+        fclose($file);
         return $content;
     }
+    return null;
 }
 
 function getAPIContent()
@@ -79,7 +80,7 @@ function getAPIContent()
         echo 'Erro na requisição cURL: ' . curl_error($ch);
     }
 
-    curl_close($ch);
+    unset($ch);
 
     return $response;
 }

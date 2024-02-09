@@ -26,9 +26,9 @@ function listarConteudo($content, $nomePokemon)
 
     foreach ($data['stats'] as $stat)
     {
-        $baseStas = $stat['base_stat'];
+        //$baseStas = ;
         $statNames = $stat['stat']['name'];
-        $stats[$statNames] = $baseStas;
+        $stats[$statNames] = $stat['base_stat'];
     }
 
     $objeto = array(
