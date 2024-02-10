@@ -20,11 +20,11 @@ function listarConteudo($content)
 {
     $nomes = array();
 
-    $meuArrayJSON = json_decode($content, true);
+    $nomeArray = json_decode($content, true);
 
-    if (isset($meuArrayJSON['results']))
+    if (isset($nomeArray['results']))
     {
-        foreach ($meuArrayJSON['results'] as $pokemon) 
+        foreach ($nomeArray['results'] as $pokemon) 
         {
             if (isset($pokemon['name']))
             {
@@ -59,7 +59,9 @@ function getFileContent()
         $fileSize = filesize($filename);
 
         $content = fread($file, $fileSize);
+        
         fclose($file);
+        
         return $content;
     }
     return null;

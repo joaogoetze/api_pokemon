@@ -1,28 +1,42 @@
 <?php
 
+//Multiplicação de matrizes quadradas
 $matriz1 = array(
-    array(1,2,3,),
-    array(4,5,6),
-    array(7,8,9)
+    array(1,2),
+    array(3,4),
 );
 
 $matriz2 = array(
-    array(1,2,3,),
-    array(4,5,6),
-    array(7,8,9)
+    array(4,5),
+    array(6,7),
 );
 
-echo "Soma de uma matriz quadrada 3x3" . PHP_EOL;
+$resultado = array();
 
-for($x=0; $x<3; $x++)
+for ($i = 0; $i < 2; $i++) 
 {
-    for($y=0; $y<3; $y++)
+    for ($j = 0; $j < 2; $j++) 
     {
-        echo $matriz1[$x][$y] * $matriz2[$x][$y] . " ";
+        $resultado[$i][$j] = 0;
+        for ($k = 0; $k < 2; $k++)
+        {
+            $resultado[$i][$j] += $matriz1[$i][$k] * $matriz2[$k][$j];
+        }
     }
-    echo " " . PHP_EOL;
 }
 
+foreach ($resultado as $linha) 
+{
+    foreach ($linha as $elemento)
+    {
+        echo $elemento . " ";
+    }
+    echo "<br>";
+}
+
+echo "<br><br>";
+
+//Multiplicação de matrizes não quadradas
 $matriz3 = array(
     array(1,2,3,4),
     array(5,6,7,8),
@@ -38,8 +52,7 @@ $matriz4 = array(
 $numLinhas = count($matriz3);
 $numColunas = count($matriz4[0]);
 
-echo " " . PHP_EOL;
-echo "Soma de uma matriz não quadrada: " . PHP_EOL;
+echo "Soma de uma matriz não quadrada: <br>";
 
 for($x=0; $x<$numLinhas; $x++)
 {
@@ -47,5 +60,7 @@ for($x=0; $x<$numLinhas; $x++)
     {
         echo $matriz3[$x][$y] * $matriz4[$x][$y] . " ";
     }
-    echo " " . PHP_EOL;
+    echo "<br>";
 }
+
+?>

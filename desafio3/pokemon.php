@@ -26,7 +26,6 @@ function listarConteudo($content, $nomePokemon)
 
     foreach ($data['stats'] as $stat)
     {
-        //$baseStas = ;
         $statNames = $stat['stat']['name'];
         $stats[$statNames] = $stat['base_stat'];
     }
@@ -49,6 +48,8 @@ function getFileContent($filename)
 
         $content = fread($file, $fileSize);
 
+        fclose($file);
+
         return $content;
     }
 }
@@ -68,7 +69,7 @@ function getAPIContent($pokemon)
         echo 'Erro na requisição cURL: ' . curl_error($ch);
     }
 
-    curl_close($ch);
+    unset($ch);
 
     return $response;
 }
